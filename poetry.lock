@@ -61,6 +61,20 @@ dev = ["pytest", "cogapp", "pre-commit", "wheel"]
 tests = ["pytest"]
 
 [[package]]
+name = "asgiref"
+version = "3.7.0"
+description = "ASGI specs, helper code, and adapters"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+typing-extensions = {version = "*", markers = "python_version < \"3.11\""}
+
+[package.extras]
+tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
+
+[[package]]
 name = "async-timeout"
 version = "4.0.2"
 description = "Timeout context manager for asyncio programs"
@@ -159,6 +173,23 @@ description = "An implementation of the Debug Adapter Protocol for Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "django"
+version = "4.2.1"
+description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+asgiref = ">=3.6.0,<4"
+sqlparse = ">=0.3.1"
+tzdata = {version = "*", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+argon2 = ["argon2-cffi (>=19.1.0)"]
+bcrypt = ["bcrypt"]
 
 [[package]]
 name = "flask"
@@ -382,7 +413,7 @@ test = ["pylint", "pycodestyle", "pyflakes", "pytest", "pytest-cov", "coverage"]
 
 [[package]]
 name = "pytoolconfig"
-version = "1.2.4"
+version = "1.2.5"
 description = "Python tool configuration"
 category = "dev"
 optional = false
@@ -395,7 +426,7 @@ tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 
 [package.extras]
 doc = ["tabulate (>=0.8.9)", "sphinx (>=4.5.0)"]
-gen_docs = ["sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)", "pytoolconfig"]
+gendocs = ["sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)", "pytoolconfig"]
 global = ["platformdirs (>=1.4.4)"]
 validation = ["pydantic (>=1.7.4)"]
 
@@ -483,6 +514,19 @@ dev = ["pytest (>=7.0.1)", "pytest-timeout (>=2.1.0)", "build (>=0.7.0)", "pre-c
 doc = ["pytoolconfig", "sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)"]
 
 [[package]]
+name = "sqlparse"
+version = "0.4.4"
+description = "A non-validating SQL parser."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+dev = ["flake8", "build"]
+doc = ["sphinx"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -505,6 +549,14 @@ description = "Backported and Experimental Type Hints for Python 3.5+"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "tzdata"
+version = "2023.3"
+description = "Provider of IANA time zone data"
+category = "main"
+optional = false
+python-versions = ">=2"
 
 [[package]]
 name = "ujson"
@@ -572,13 +624,14 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "b8c52bc276da744c44fb104c65b4d40a874b5f9ccc4d8a4ce301a52b3fbfef9c"
+content-hash = "4573db9bbc797119f6da5118675f2e08e778adcca086b3f5cd1a2343d3d4aee0"
 
 [metadata.files]
 aiohttp = []
 aiosignal = []
 argon2-cffi = []
 argon2-cffi-bindings = []
+asgiref = []
 async-timeout = []
 attrs = []
 certifi = []
@@ -588,6 +641,7 @@ click = []
 colorama = []
 cryptography = []
 debugpy = []
+django = []
 flask = []
 frozenlist = []
 idna = []
@@ -613,9 +667,11 @@ replit = []
 replit-python-lsp-server = []
 requests = []
 rope = []
+sqlparse = []
 toml = []
 tomli = []
 typing-extensions = []
+tzdata = []
 ujson = []
 urllib3 = []
 werkzeug = []
